@@ -12,3 +12,32 @@ Returns:
 1 if the solution is bigger than the guess parameter
 
 Warning: You are not allowed to call verify() more that 50 times or you loose. */
+
+//
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function trouvnumber() {
+  let guess = 500000;
+  let random = randomInt(1, 1000000);
+  let highest = guess;
+  let lowest = guess;
+
+  console.log(random);
+
+  for (i = 0; i <= 50; i++) {
+    let guess = i;
+    let verify = verify(guess);
+    if (verify === 0) {
+      console.log(
+        "You won ! The number was " + guess + " in " + i + 1 + "Guesses !"
+      );
+      break;
+    } else if (verify === -1) {
+      if (lowest > guess) guess = guess - guess / 2;
+    } else {
+      guess = guess + guess / 2;
+    }
+  }
+}
