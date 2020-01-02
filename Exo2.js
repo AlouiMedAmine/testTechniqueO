@@ -14,30 +14,50 @@ Returns:
 Warning: You are not allowed to call verify() more that 50 times or you loose. */
 
 //
+
+let guess = 500000;
+let highest = 1000000;
+let lowest = 0;
+let random = randomInt(1, 1000000);
+
+console.log(random);
+trouvnumber(random);
+
+// functions
+
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function trouvnumber() {
-  let guess = 500000;
-  let random = randomInt(1, 1000000);
-  let highest = guess;
-  let lowest = guess;
+function verify(guess) {
+  if (guess == random) {
+    return 0;
+  } else if (guess > random) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
 
-  console.log(random);
-
-  for (i = 0; i <= 50; i++) {
-    let guess = i;
-    let verify = verify(guess);
-    if (verify === 0) {
-      console.log(
-        "You won ! The number was " + guess + " in " + i + 1 + "Guesses !"
-      );
-      break;
-    } else if (verify === -1) {
-      if (lowest > guess) guess = guess - guess / 2;
+function trouvnumber(random) {
+  for (i = 0; i <= 51; i++) {
+    if (i == 51) {
+      console.log("You lost CONputer");
     } else {
-      guess = guess + guess / 2;
+      console.log("Try number :" + i);
+      guess = parseInt((lowest + highest) / 2);
+      console.log("Computer said : My guess is ... " + guess + "!!!");
+      let state = verify(guess);
+      if (state == 1) {
+        highest = guess;
+      } else if (state == -1) {
+        lowest = guess;
+      } else {
+        console.log("Computer said : I've won, it was :" + guess + ":)");
+        break;
+      }
     }
   }
 }
+
+//temps passé : 25 min

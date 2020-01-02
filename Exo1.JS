@@ -4,11 +4,9 @@ when the integer is a multiple of 3 print “Open” instead of the number,
 when it is a multiple of 7 print “Source” instead of the number,
 when it is a multiple of both 3 and 7 print “OpenSource” instead of the number.*/
 
-(() => {
-  for (i = 1; i < 100; i++) {
-    if (i % 21 == 0) console.log("OpenSource");
-    else if (i % 3 == 0) console.log("Open");
-    else if (i % 7 == 0) console.log("Source");
-    else console.log(i);
-  }
-})();
+for (i = 1; i < 100; i++) {
+  if (i % 21 == 0) console.log("OpenSource");
+  else if (i % 3 == 0) console.log("Open");
+  else if (i % 7 == 0) console.log("Source");
+  else console.log(i);
+}
